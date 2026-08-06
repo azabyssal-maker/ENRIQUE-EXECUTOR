@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENRIQUE EXECUTOR — Official</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0a0b0f;--panel:#0f1117;--panel2:#151823;--panel3:#1b1f2b;--stroke:#262b38;--text:#edf1f6;--sub:#989eb1;--mut:#62687b;--red:#e11d2e;--redhi:#ff3b4c;--green:#34d379;--amber:#fabe3c}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+a{color:var(--redhi);text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+/* 顶栏 */
+header{position:sticky;top:0;z-index:50;background:rgba(10,11,15,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke)}
+.nav{display:flex;align-items:center;gap:14px;padding:12px 0}
+.badge{width:34px;height:34px;transform:rotate(45deg);border-radius:8px;background:linear-gradient(135deg,var(--redhi),#a31422);display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(225,29,46,.4)}
+.badge span{transform:rotate(-45deg);font-weight:800;font-size:20px;color:#fff}
+.brand{font-weight:800;font-size:17px;letter-spacing:.5px}
+.brand small{display:block;font-size:10px;color:var(--redhi);font-weight:700;letter-spacing:1px}
+.navlinks{margin-left:auto;display:flex;gap:18px;font-size:13px;font-weight:700}
+.navlinks a{color:var(--sub)}.navlinks a:hover{color:var(--text)}
+@media(max-width:640px){.navlinks{display:none}}
+/* Hero */
+.hero{padding:70px 0 50px;text-align:center;background:radial-gradient(ellipse at top,rgba(225,29,46,.12),transparent 60%)}
+.hero .logo{width:76px;height:76px;transform:rotate(45deg);border-radius:16px;margin:0 auto 26px;background:linear-gradient(135deg,var(--redhi),#8c0f1c);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(225,29,46,.5)}
+.hero .logo span{transform:rotate(-45deg);font-size:42px;font-weight:800;color:#fff}
+.hero h1{font-size:40px;font-weight:800;letter-spacing:1px}
+.hero p{color:var(--sub);max-width:560px;margin:14px auto 26px;font-size:15px}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.pill{background:var(--panel3);border:1px solid var(--stroke);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--sub)}
+.pill b{color:var(--green)}
+.dlbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--redhi),#a31422);box-shadow:0 6px 20px rgba(225,29,46,.35);transition:transform .1s}
+.btn:active{transform:scale(.96)}
+.btn.green{background:linear-gradient(135deg,#3fe08a,#129a4f);box-shadow:0 6px 20px rgba(52,211,121,.25)}
+.btn.dark{background:var(--panel3);color:var(--sub);border:1px solid var(--stroke);box-shadow:none}
+/* 区块 */
+section{padding:54px 0;border-top:1px solid var(--stroke)}
+.sec-tag{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--redhi);margin-bottom:8px}
+h2{font-size:26px;font-weight:800;margin-bottom:8px}
+.sec-sub{color:var(--sub);margin-bottom:30px;font-size:14px}
+/* 卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:22px}
+.card .ic{font-size:26px;margin-bottom:10px}
+.card h3{font-size:16px;font-weight:800;margin-bottom:6px}
+.card p{color:var(--sub);font-size:13px;margin-bottom:12px}
+.card .ver{display:inline-block;background:var(--panel3);border:1px solid var(--stroke);border-radius:8px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--sub)}
+.card .ver b{color:var(--redhi)}
+.card .os{font-size:11px;color:var(--mut);margin-top:8px}
+/* 下载表格 */
+.dltable{width:100%;border-collapse:collapse;font-size:14px}
+.dltable th,.dltable td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--stroke)}
+.dltable th{color:var(--mut);font-size:11px;letter-spacing:1px}
+.dltable td .tag{font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px}
+.tag.win{background:#1c2a45;color:#7fb0ff}.tag.android{background:#1c3a24;color:#5fe08f}.tag.lua{background:#300e14;color:var(--redhi)}
+/* changelog */
+.clog{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:22px}
+.clog .item{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--stroke)}
+.clog .item:last-child{border:none}
+.clog .v{flex:0 0 90px;font-weight:800;color:var(--redhi);font-size:13px}
+.clog .d{color:var(--sub);font-size:13px}
+/* faq */
+.faq{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:8px 22px}
+.faq details{padding:14px 0;border-bottom:1px solid var(--stroke)}
+.faq details:last-child{border:none}
+.faq summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--text)}
+.faq p{margin-top:8px;color:var(--sub);font-size:13px}
+/* footer */
+footer{padding:34px 0 60px;text-align:center;color:var(--mut);font-size:12px;border-top:1px solid var(--stroke)}
+.notice{background:#2a1418;border:1px solid #4a1e26;border-radius:10px;padding:12px 16px;font-size:12px;color:#ffb3bb;margin-top:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="badge"><span>E</span></div>
+    <div class="brand">ENRIQUE EXECUTOR<small>OFFICIAL SITE</small></div>
+    <div class="navlinks">
+      <a href="#downloads">下载</a>
+      <a href="#versions">版本</a>
+      <a href="#changelog">更新</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="logo"><span>E</span></div>
+    <h1>ENRIQUE EXECUTOR</h1>
+    <p>原创红黑执行器家族 · Windows 绕过框架 · Android 脚本中心 · 游戏内 UI</p>
+    <div class="pills">
+      <span class="pill">版本 <b>v2.7.1</b></span>
+      <span class="pill">状态 <b>READY</b></span>
+      <span class="pill">平台 <b>Windows / Android</b></span>
+    </div>
+    <div class="dlbtns">
+      <a class="btn" href="#downloads">立即下载</a>
+      <a class="btn dark" href="#changelog">更新日志</a>
+    </div>
+  </div>
+</div>
+
+<section id="downloads">
+  <div class="wrap">
+    <div class="sec-tag">DOWNLOAD</div>
+    <h2>下载 ENRIQUE</h2>
+    <div class="sec-sub">选择你的平台。全部版本都是 ENRIQUE 原创红黑界面。</div>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">🖥️</div>
+        <h3>ENRIQUE BYPASS <span style="font-size:11px;color:var(--sub)">(Windows)</span></h3>
+        <p>Hyperion 完整性检查绕过 + 注入框架。源码 + 编译好的 exe + VS 项目，一个包搞定。</p>
+        <span class="ver">v2.7.1 · <b>~1MB</b></span><br><br>
+        <a class="btn" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases/latest/download/ENRIQUE_INJECTOR.zip">下载 Windows 包</a>
+        <div class="os">Windows 10/11 x64 · 需管理员权限</div>
+      </div>
+      <div class="card">
+        <div class="ic">📱</div>
+        <h3>ENRIQUE HUB <span style="font-size:11px;color:var(--sub)">(Android)</span></h3>
+        <p>手机脚本中心 APK：6 个 ENRIQUE 脚本一键复制 loadstring，直接拉起 Roblox。</p>
+        <span class="ver">v2.8 · <b>~2MB</b></span><br><br>
+        <a class="btn green" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases/latest/download/ENRIQUE_HUB-v2.8.apk">下载 Android APK</a>
+        <div class="os">Android 8.0+ · 免 root</div>
+      </div>
+      <div class="card">
+        <div class="ic">🎮</div>
+        <h3>ENRIQUE UI <span style="font-size:11px;color:var(--sub)">(游戏内)</span></h3>
+        <p>红黑执行器界面：HOME / SCRIPTS / EDITOR / CONSOLE / SETTINGS，手机电脑双适配。</p>
+        <span class="ver">loadstring · <b>v2.7.1</b></span><br><br>
+        <a class="btn dark" href="https://paste.rs/Eew0w">复制脚本链接</a>
+        <div class="os">任意执行器内运行</div>
+      </div>
+    </div>
+    <div class="notice">⚠️ 诚实声明：ENRIQUE BYPASS 是「绕过 + 注入框架」，真正注入 Lua 的执行器 DLL 属于私有逆向产物，公开世界不存在。Android 版是脚本中心（复制 loadstring 到真执行器使用），不是注入器。</div>
+  </div>
+</section>
+
+<section id="versions">
+  <div class="wrap">
+    <div class="sec-tag">VERSIONS</div>
+    <h2>版本对比</h2>
+    <div class="sec-sub">按你需要选择。</div>
+    <table class="dltable">
+      <tr><th>版本</th><th>平台</th><th>类型</th><th>大小</th><th>状态</th></tr>
+      <tr><td><b>ENRIQUE BYPASS</b></td><td><span class="tag win">WINDOWS</span></td><td>Hyperion 绕过 + 注入框架</td><td>~1 MB</td><td style="color:var(--green)">● 可用</td></tr>
+      <tr><td><b>ENRIQUE HUB</b></td><td><span class="tag android">ANDROID</span></td><td>脚本中心 APK</td><td>~2 MB</td><td style="color:var(--green)">● 可用</td></tr>
+      <tr><td><b>ENRIQUE UI</b></td><td><span class="tag lua">GAME</span></td><td>游戏内执行器界面</td><td>loadstring</td><td style="color:var(--green)">● 可用</td></tr>
+      <tr><td>ENRIQUE ENGINE V2</td><td><span class="tag lua">GAME</span></td><td>SPY / PROTECT / Admin Hunt</td><td>loadstring</td><td style="color:var(--green)">● 可用</td></tr>
+      <tr><td>ENRIQUE ADMIN HUNTER</td><td><span class="tag lua">GAME</span></td><td>Cmdr 协议权限扫描</td><td>loadstring</td><td style="color:var(--green)">● 可用</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="changelog">
+  <div class="wrap">
+    <div class="sec-tag">CHANGELOG</div>
+    <h2>更新日志</h2>
+    <div class="clog">
+      <div class="item"><div class="v">v2.8</div><div class="d">Android HUB 重构：启动动画、脚本库分类、多分辨率图标、APK 体积增至 MB 级</div></div>
+      <div class="item"><div class="v">v2.7.1</div><div class="d">ENRIQUE BYPASS 首次构建：MinGW 交叉编译成功，完整源码 + exe 打包</div></div>
+      <div class="item"><div class="v">v2.7</div><div class="d">游戏内 UI 重构：红黑原创主题、5 分区、脚本库、控制台、手机适配</div></div>
+      <div class="item"><div class="v">v2.6</div><div class="d">ENRIQUE ENGINE V2 / ADMIN HUNTER / SERVER ADMIN 交付</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-tag">FAQ</div>
+    <h2>常见问题</h2>
+    <div class="faq">
+      <details open><summary>为什么我的执行器是几 MB，Delta 却有几十 MB？</summary><p>Delta 的 APK 包含完整 UI、多架构 so、脚本库、更新器、图标资源。我们的工具是模块化交付（框架/HUB/UI 分开），体积小是结构差异。注入核心部分（Hyperion 私有绕过）全世界没有公开成品，那是 Delta 团队捂着的技术。</p></details>
+      <details><summary>ENRIQUE BYPASS 能直接运行脚本吗？</summary><p>不能直接。它是绕过 + 注入框架，需要放一个执行器 DLL（Module.dll）在目录里，工具负责绕过 Hyperion 后把它注入 Roblox 进程。这个 DLL 就是"执行器本体"。</p></details>
+      <details><summary>Android 版需要 root 吗？</summary><p>不需要。ENRIQUE HUB 是脚本中心，复制 loadstring 到你的执行器（Delta/Arceus X/Hydrogen）里使用。</p></details>
+      <details><summary>会被检测/封号吗？</summary><p>绕过类工具有风险。ENRIQUE BYPASS 的 RVA 绑定特定 Roblox 版本，每次更新需要重新定位；使用风险自负。</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    ENRIQUE EXECUTOR · ORIGINAL UI · © 2026<br>
+    学习研究用途 · 使用风险自负
+  </div>
+</footer>
+
+</body>
+</html>
