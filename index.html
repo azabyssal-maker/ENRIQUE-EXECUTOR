@@ -3,100 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ENRIQUE EXECUTOR</title>
+<meta name="description" content="ENRIQUE EXECUTOR — Delta-style Roblox executor launcher for Android. Real Roblox bundled, script library, root engine payload.">
+<title>ENRIQUE EXECUTOR — Android Roblox Executor Launcher</title>
 <style>
-:root{--bg:#0A0A0F;--panel:#12121A;--line:#232332;--accent:#DB4876;--text:#EDEDF2;--sub:#9AA0AE}
+:root{--bg:#0A0A0F;--panel:#12121A;--panel2:#1A1A26;--line:#232332;--accent:#DB4876;--accent2:#A22A4E;
+--text:#EDEDF2;--sub:#9AA0AE;--dim:#5C6270;--green:#3DDC84;--warn:#E8C88A}
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{background:radial-gradient(120% 90% at 50% 0%,#1A0B12 0%,#0A0A0F 55%);color:var(--text);
-  font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
-.wrap{max-width:960px;margin:0 auto;padding:28px 20px}
-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px}
-.brand{font-weight:900;letter-spacing:3px;color:var(--accent);font-size:18px}
-nav a{color:var(--sub);text-decoration:none;font-size:13px;margin-left:22px}
-nav a:hover{color:var(--text)}
-.hero{text-align:center;margin:40px 0 52px}
-h1{font-size:clamp(34px,7vw,62px);font-weight:900;letter-spacing:5px;color:var(--accent);
-  text-shadow:0 0 40px rgba(219,72,118,.4)}
-.sub{color:var(--sub);font-size:15px;margin-top:10px;letter-spacing:1px}
-.pill{display:inline-block;margin-top:18px;background:rgba(219,72,118,.12);color:var(--accent);
-  border:1px solid rgba(219,72,118,.4);padding:7px 16px;border-radius:99px;font-size:12px;font-weight:700}
-.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin:26px 0}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
-.card h3{font-size:16px;margin-bottom:8px}
-.card p{color:var(--sub);font-size:13px;line-height:1.55;min-height:52px}
-.ver{color:var(--dim);font-size:12px;display:block;margin:12px 0}
-.btn{display:inline-block;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--accent),#A22A4E);
-  padding:12px 20px;border-radius:11px;font-size:13px;font-weight:800;letter-spacing:.5px}
-.btn.alt{background:var(--panel2);border:1px solid var(--line);color:var(--text)}
-.notice{margin-top:20px;background:rgba(245,166,35,.07);border:1px solid rgba(245,166,35,.3);
-  padding:14px 16px;border-radius:12px;font-size:12.5px;color:#E8C88A;line-height:1.7}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px;margin-top:24px}
-.feat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
-.feat h4{color:var(--accent);font-size:13px;letter-spacing:2px;margin-bottom:10px}
-.feat ul{list-style:none}
-.feat li{font-size:13px;color:var(--sub);padding:5px 0;border-bottom:1px dashed #1C1C28}
-.feat li:last-child{border:none}
-.cl{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;min-height:100vh;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 20px}
+nav{position:sticky;top:0;z-index:20;background:rgba(10,10,15,.85);backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:900;letter-spacing:3px;color:var(--accent);font-size:17px}
+.nav-links a{color:var(--sub);text-decoration:none;font-size:13px;margin-left:22px;transition:.2s}
+.nav-links a:hover{color:var(--accent)}
+.hero{text-align:center;padding:64px 0 30px}
+h1{font-size:clamp(36px,8vw,68px);font-weight:900;letter-spacing:6px;color:var(--accent);
+text-shadow:0 0 50px rgba(219,72,118,.45)}
+.hero .sub{color:var(--sub);font-size:15px;letter-spacing:2px;margin-top:12px}
+.pill{display:inline-block;margin-top:20px;background:rgba(219,72,118,.12);color:var(--accent);
+border:1px solid rgba(219,72,118,.4);padding:8px 18px;border-radius:99px;font-size:12.5px;font-weight:700}
+.cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;
+background:linear-gradient(135deg,var(--accent),var(--accent2));padding:14px 26px;border-radius:12px;
+font-size:14px;font-weight:800;letter-spacing:.5px;box-shadow:0 8px 28px rgba(219,72,118,.35);transition:transform .12s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:var(--panel2);border:1px solid var(--line);box-shadow:none;color:var(--text)}
+section{margin:56px 0}
+.sec-tag{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(22px,4vw,30px);font-weight:900;letter-spacing:1px;margin-bottom:22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.2s}
+.card:hover{border-color:rgba(219,72,118,.5);transform:translateY(-3px)}
+.card .ic{font-size:26px;margin-bottom:12px}
+.card h3{font-size:15px;margin-bottom:8px}
+.card p{color:var(--sub);font-size:13px}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.feat{display:flex;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+.feat .fi{color:var(--accent);font-size:18px;flex-shrink:0}
+.feat b{font-size:13.5px;display:block;margin-bottom:3px}
+.feat span{font-size:12.5px;color:var(--sub)}
+.notice{background:rgba(245,166,35,.07);border:1px solid rgba(245,166,35,.3);padding:16px 18px;
+border-radius:12px;font-size:13px;color:var(--warn);line-height:1.7}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+.faq summary{font-weight:700;font-size:14px;cursor:pointer;color:var(--text)}
+.faq details p{color:var(--sub);font-size:13px;margin-top:10px}
+.faq details[open]{border-color:rgba(219,72,118,.4)}
+.mirrors{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.mirrors a{font-size:12px;color:var(--accent);border:1px solid var(--line);padding:8px 14px;border-radius:99px;text-decoration:none;background:var(--panel)}
+.mirrors a:hover{border-color:var(--accent)}
+footer{border-top:1px solid var(--line);margin-top:70px;padding:24px 0;color:var(--dim);font-size:12.5px;
+display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+footer .fl{letter-spacing:2px;font-weight:800;color:var(--sub)}
+@media(max-width:560px){.nav-links a{margin-left:14px;font-size:12px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
+<nav>
+  <div class="wrap">
     <div class="brand">ENRIQUE</div>
-    <div><a href="#download">Download</a><a href="#features">Features</a><a href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases">Releases</a></div>
-  </nav>
+    <div class="nav-links">
+      <a href="#download">Download</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
 
   <div class="hero">
     <h1>ENRIQUE EXECUTOR</h1>
     <div class="sub">DELTA-STYLE · ANDROID · ENGLISH</div>
-    <span class="pill">v3.0 — 218 MB · real Roblox bundled</span>
-  </div>
-
-  <div class="dl" id="download">
-    <div class="card">
-      <h3>ENRIQUE EXECUTOR <span style="color:var(--dim);font-size:12px">(Android)</span></h3>
-      <p>Delta-style launcher APK with the real Roblox build (228 MB) inside. Execute console, script library, engine payload, one-tap install &amp; launch.</p>
-      <span class="ver">v3.0 · 218 MB APK · Android 8.0+</span><br>
-      <a class="btn" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases/latest/download/ENRIQUE_EXECUTOR-v3.0.apk">Download APK</a>
+    <span class="pill">v3.0 — 218 MB APK · real Roblox 2.732.1043 bundled</span>
+    <div class="cta">
+      <a class="btn" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases/latest/download/ENRIQUE_EXECUTOR-v3.0.apk">⬇ Download APK (218 MB)</a>
+      <a class="btn alt" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases">All Releases</a>
     </div>
-    <div class="card">
-      <h3>ENRIQUE INJECTOR <span style="color:var(--dim);font-size:12px">(Android · root)</span></h3>
-      <p>Standalone ptrace injection framework + Roblox reverse-engineering report (Lua VM anchors, integrity analysis). Source + binaries.</p>
-      <span class="ver">v2.9 · 0.3 MB zip</span><br>
-      <a class="btn alt" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/releases/latest/download/ENRIQUE_ANDROID_INJECTOR.zip">Download Framework</a>
+    <div class="mirrors" style="justify-content:center">
+      <span style="color:var(--dim);font-size:12px;align-self:center">Mirrors:</span>
+      <a href="https://cdn.jsdelivr.net/gh/azabyssal-maker/ENRIQUE-EXECUTOR@main/index.html">jsDelivr CDN</a>
+      <a href="https://htmlpreview.github.io/?https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR/blob/main/index.html">HTML Preview</a>
+      <a href="https://raw.githack.com/azabyssal-maker/ENRIQUE-EXECUTOR/main/index.html">githack</a>
     </div>
   </div>
 
-  <div class="notice"><b>Honest note:</b> Roblox ships with Hyperion protection. ENRIQUE EXECUTOR is a real launcher + script center + root injection framework. Full Lua execution on the newest Hyperion-protected builds needs per-version bypass work — the RE report in the framework package documents exactly what was found and what is still required.</div>
-
-  <div class="grid2" id="features">
-    <div class="feat">
-      <h4>APPLICATION</h4>
-      <ul>
-        <li>▶ Execute console with built-in Lua editor</li>
-        <li>📚 7 English script cards (Gakuran, Blade Ball, Universal…)</li>
-        <li>🎮 Bundled real Roblox APK — extract, install, launch</li>
-        <li>⚡ Root engine payload (ptrace injection)</li>
-        <li>⚙️ Settings · status detection · English UI</li>
-      </ul>
+  <section id="download">
+    <div class="sec-tag">Download</div>
+    <h2>One APK. Everything inside.</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">📱</div>
+        <h3>ENRIQUE EXECUTOR — Android</h3>
+        <p>Delta-style launcher. The real Roblox build (228 MB) is packed inside the APK — extract, install and launch in one tap.</p>
+        <p style="margin-top:10px;color:var(--dim);font-size:12px">v3.0 · 218 MB · Android 8.0+ · APK signed</p>
+      </div>
+      <div class="card">
+        <div class="ic">⚡</div>
+        <h3>ENRIQUE ENGINE — root payload</h3>
+        <p>Real ptrace injection framework (aarch64) bundled with the app. Includes the Roblox reverse-engineering report: Lua VM anchors and integrity analysis.</p>
+        <p style="margin-top:10px;color:var(--dim);font-size:12px">v2.9 · framework + RE report</p>
+      </div>
+      <div class="card">
+        <div class="ic">📚</div>
+        <h3>Script library</h3>
+        <p>7 built-in English scripts: Gakuran Combat Pro, Blade Ball INF Block, Blade Ball Hub, Skin Changer, Macro Autofarm, Admin Hunter, Universal Kit.</p>
+      </div>
     </div>
-    <div class="feat">
-      <h4>REVERSE ENGINEERING</h4>
-      <ul>
-        <li>Lua VM core located: 3 clusters + 6 function boundaries</li>
-        <li>crashpad ptrace module identified as non-anticheat (negative result)</li>
-        <li>Hyperion string encryption confirmed · no .byfron section on Android</li>
-        <li>GNU hash symbol resolver verified against real aarch64 glibc</li>
-      </ul>
-    </div>
-  </div>
+  </section>
 
-  <div class="cl">
-    <span>© 2026 ENRIQUE · not affiliated with Roblox</span>
-    <span><a style="color:var(--sub)" href="https://github.com/azabyssal-maker/ENRIQUE-EXECUTOR">GitHub</a></span>
-  </div>
+  <section id="features">
+    <div class="sec-tag">Features</div>
+    <h2>What's inside</h2>
+    <div class="feats">
+      <div class="feat"><div class="fi">▶</div><div><b>Execute console</b><span>Lua editor with built-in console output</span></div></div>
+      <div class="feat"><div class="fi">🎮</div><div><b>Roblox bundled</b><span>Real 2.732.1043 build — extract &amp; install</span></div></div>
+      <div class="feat"><div class="fi">📚</div><div><b>Script cards</b><span>Searchable library, one-tap load into editor</span></div></div>
+      <div class="feat"><div class="fi">⚡</div><div><b>Engine injection</b><span>ptrace payload for rooted devices</span></div></div>
+      <div class="feat"><div class="fi">🖥️</div><div><b>Status detection</b><span>Root / Roblox installed / running</span></div></div>
+      <div class="feat"><div class="fi">🌐</div><div><b>English UI</b><span>Delta-style red &amp; black theme</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-tag">Note</div>
+    <div class="notice"><b>Honest note:</b> Roblox ships with Hyperion protection. ENRIQUE EXECUTOR is a real launcher, script center and root injection framework. Full Lua execution on the newest Hyperion-protected builds requires per-version bypass — the RE report in the framework package documents exactly what was found and what is still required. No fake features, no hidden fees.</div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-tag">FAQ</div>
+    <h2>Questions</h2>
+    <div class="faq">
+      <details open>
+        <summary>Is this a real APK?</summary>
+        <p>Yes. Signed, installable, 218 MB. The real Roblox APK (228 MB) is embedded inside, extracted and installed from the app.</p>
+      </details>
+      <details>
+        <summary>Does it work on every device?</summary>
+        <p>Android 8.0 and above. No root needed for install/launch/scripts; root is only required for the engine injection payload.</p>
+      </details>
+      <details>
+        <summary>Why can't it execute on the latest Roblox?</summary>
+        <p>Hyperion protection. Bypassing it needs per-version reverse engineering, which is documented in the included RE report. The injection framework itself is real and works on non-Hyperion targets.</p>
+      </details>
+      <details>
+        <summary>Is it free?</summary>
+        <p>Yes. Everything is public on GitHub.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <span class="fl">ENRIQUE EXECUTOR</span>
+    <span>Android · English · not affiliated with Roblox</span>
+  </footer>
 </div>
 </body>
 </html>
