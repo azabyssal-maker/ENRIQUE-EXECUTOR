@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ENRIQUE EXECUTOR — Generate your free ENQ activation key. Delta-style 15 second key system.">
+<meta name="description" content="ENRIQUE EXECUTOR — Generate your free ENQ activation key. ENRIQUE 15 second key system.">
 <title>ENRIQUE KEY — Get Your Free Key</title>
 <style>
 :root{--bg:#0A0A0F;--panel:#12121A;--panel2:#1A1A26;--line:#232332;--accent:#DB4876;--accent2:#A22A4E;
@@ -85,7 +85,7 @@ a{color:var(--accent)}
   <div class="card">
     <div class="ic">🔑</div>
     <h1>ENRIQUE KEY</h1>
-    <div class="sub">Delta-style key system · free · no account</div>
+    <div class="sub">ENRIQUE key system · free · no account</div>
     <div><span class="pill">15 SECOND KEY — v1.0</span></div>
 
     <div id="waitStage">
@@ -121,6 +121,9 @@ a{color:var(--accent)}
 <footer>ENRIQUE EXECUTOR · Android · not affiliated with Roblox</footer>
 
 <script>
+/* ---------- helpers ---------- */
+function $(id){return document.getElementById(id)}
+
 /* ---------- same key algorithm as the app (FNV-1a 32 + salt) ---------- */
 var K_ALPHA="ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 function Kfnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193);h=h>>>0;}return h>>>0;}
@@ -140,6 +143,7 @@ function tick(left){
   if(left<=0){
     timer.textContent='0';
     genBtn.disabled=false;genBtn.textContent='📋 COPY KEY';
+    reveal();
     return;
   }
   timer.textContent=left;
